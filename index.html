@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salon Elegance | Kadeřnictví</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- HLAVIČKA / NAVIGACE -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#hero" class="logo">BILL&<span>BOY</span></a>
+
+      <nav class="nav" id="nav">
+        <ul class="nav__list">
+          <li><a href="#hero" class="nav__link">Domů</a></li>
+          <li><a href="#sluzby" class="nav__link">Služby</a></li>
+          <li><a href="#galerie" class="nav__link">Galerie</a></li>
+          <li><a href="#recenze" class="nav__link">Recenze</a></li>
+          <li><a href="#kontakt" class="nav__link">Kontakt</a></li>
+        </ul>
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Otevřít menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO SEKCE -->
+  <section class="hero" id="hero">
+    <div class="hero__overlay"></div>
+    <div class="container hero__content">
+      <h1 class="hero__title">Krása začíná v našich rukou</h1>
+      <p class="hero__subtitle">Profesionální kadeřnictví s citem pro detail a moderní trendy</p>
+      <a href="#rezervace" class="btn btn--primary">Rezervovat termín</a>
+    </div>
+  </section>
+
+  <!-- SLUŽBY -->
+  <section class="sluzby" id="sluzby">
+    <div class="container">
+      <h2 class="section-title">Naše služby</h2>
+      <p class="section-subtitle">Vyberte si z naší nabídky profesionální péče o vlasy</p>
+
+      <div class="sluzby__grid">
+        <div class="karta">
+          <div class="karta__ikona">✂️</div>
+          <h3>Střihy</h3>
+          <p>Dámské, pánské i dětské střihy podle nejnovějších trendů.</p>
+          <span class="karta__cena">od 350 Kč</span>
+        </div>
+
+        <div class="karta">
+          <div class="karta__ikona">🎨</div>
+          <h3>Barvení</h3>
+          <p>Melír, balayage i celoplošné barvení kvalitními produkty.</p>
+          <span class="karta__cena">od 900 Kč</span>
+        </div>
+
+        <div class="karta">
+          <div class="karta__ikona">💆</div>
+          <h3>Péče o vlasy</h3>
+          <p>Regenerační kúry a masáže vlasové pokožky.</p>
+          <span class="karta__cena">od 450 Kč</span>
+        </div>
+
+        <div class="karta">
+          <div class="karta__ikona">💇</div>
+          <h3>Styling</h3>
+          <p>Účesy na svatby, plesy a jiné slavnostní příležitosti.</p>
+          <span class="karta__cena">od 600 Kč</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <section class="galerie" id="galerie">
+    <div class="container">
+      <h2 class="section-title">Galerie</h2>
+      <p class="section-subtitle">Podívejte se na naši práci</p>
+
+      <div class="galerie__grid" id="galerieGrid">
+        <!-- Obrázky se generují pomocí JS, viz js/script.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- REZERVACE -->
+  <section class="rezervace" id="rezervace">
+    <div class="container rezervace__inner">
+      <div class="rezervace__text">
+        <h2 class="section-title section-title--left">Rezervujte si termín</h2>
+        <p>Vyplňte formulář a my se vám ozveme co nejdříve pro potvrzení termínu.</p>
+      </div>
+
+      <form class="formular" id="rezervaceForm" novalidate>
+        <div class="formular__pole">
+          <label for="jmeno">Jméno a příjmení *</label>
+          <input type="text" id="jmeno" name="jmeno" placeholder="Např. Jana Nováková">
+          <span class="chyba" id="chyba-jmeno"></span>
+        </div>
+
+        <div class="formular__pole">
+          <label for="telefon">Telefon *</label>
+          <input type="tel" id="telefon" name="telefon" placeholder="+420 601 234 567">
+          <span class="chyba" id="chyba-telefon"></span>
+        </div>
+
+        <div class="formular__pole">
+          <label for="email">E-mail *</label>
+          <input type="email" id="email" name="email" placeholder="jana@email.cz">
+          <span class="chyba" id="chyba-email"></span>
+        </div>
+
+        <div class="formular__pole">
+          <label for="sluzba">Vyberte službu *</label>
+          <select id="sluzba" name="sluzba">
+            <option value="">-- vyberte --</option>
+            <option value="strih">Střih</option>
+            <option value="barveni">Barvení</option>
+            <option value="pece">Péče o vlasy</option>
+            <option value="styling">Styling</option>
+          </select>
+          <span class="chyba" id="chyba-sluzba"></span>
+        </div>
+
+        <div class="formular__pole">
+          <label for="datum">Preferované datum *</label>
+          <input type="date" id="datum" name="datum">
+          <span class="chyba" id="chyba-datum"></span>
+        </div>
+
+        <div class="formular__pole formular__pole--full">
+          <label for="poznamka">Poznámka</label>
+          <textarea id="poznamka" name="poznamka" rows="3" placeholder="Nepovinné - napište nám cokoliv důležitého"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn--primary formular__submit">Odeslat rezervaci</button>
+
+        <p class="formular__potvrzeni" id="potvrzeni"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- RECENZE -->
+  <section class="recenze" id="recenze">
+    <div class="container">
+      <h2 class="section-title">Co říkají naši klienti</h2>
+
+      <div class="recenze__slider">
+        <button class="recenze__sipka recenze__sipka--vlevo" id="sipkaVlevo" aria-label="Předchozí recenze">&#10094;</button>
+
+        <div class="recenze__okno">
+          <div class="recenze__track" id="recenzeTrack">
+            <blockquote class="recenze__karta">
+              <p>"Naprosto spokojená, střih přesně podle mých představ. Doporučuji všem!"</p>
+              <cite>- Petra K.</cite>
+            </blockquote>
+            <blockquote class="recenze__karta">
+              <p>"Skvělý přístup personálu a profesionální barvení vlasů. Budu se vracet."</p>
+              <cite>- Lucie M.</cite>
+            </blockquote>
+            <blockquote class="recenze__karta">
+              <p>"Nejlepší kadeřnictví ve městě. Vždy odcházím spokojená a s úsměvem."</p>
+              <cite>- Tereza S.</cite>
+            </blockquote>
+          </div>
+        </div>
+
+        <button class="recenze__sipka recenze__sipka--vpravo" id="sipkaVpravo" aria-label="Další recenze">&#10095;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
+  <footer class="kontakt" id="kontakt">
+    <div class="container kontakt__inner">
+      <div>
+        <h3 class="logo logo--footer">BILL&<span>BOY</span></h3>
+        <p>Vaše krása je naše vášeň.</p>
+      </div>
+
+      <div>
+        <h4>Kontaktní údaje</h4>
+        <p>📍 Jungmannova 611/6, 301 00 Plzeň 3-Jižní Předměstí</p>
+        <p>📞 +420 608 881 393</p>
+      </div>
+
+      <div>
+        <h4>Otevírací doba</h4>
+        <p>Po - Pá: 9:00 - 19:00</p>
+        <p>So - Ne: 10:00 - 19:00</p>
+        
+      </div>
+    </div>
+    <p class="kontakt__copy">&copy; <span id="rok"></span> Bill&Boy. Všechna práva vyhrazena.</p>
+  </footer>
+
+  <!-- Tlačítko pro rychlý návrat nahoru -->
+  <button id="nahoruBtn" class="nahoru-btn" aria-label="Zpět nahoru">&#8593;</button>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

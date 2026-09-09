@@ -1,0 +1,559 @@
+/* ===== RESET A ZÁKLADNÍ NASTAVENÍ ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --barva-primarni: #c98a6b;
+  --barva-primarni-tmava: #a86a4d;
+  --barva-tmava: #2b2320;
+  --barva-textu: #4a4038;
+  --barva-svetle-pozadi: #faf6f2;
+  --barva-bila: #ffffff;
+  --stin: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --prechod: all 0.3s ease;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--barva-textu);
+  line-height: 1.6;
+  background-color: var(--barva-bila);
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', serif;
+  color: var(--barva-tmava);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  margin-bottom: 8px;
+}
+
+.section-title--left {
+  text-align: left;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: #8a7d72;
+  margin-bottom: 48px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: var(--prechod);
+}
+
+.btn--primary {
+  background-color: var(--barva-primarni);
+  color: var(--barva-bila);
+}
+
+.btn--primary:hover {
+  background-color: var(--barva-primarni-tmava);
+  transform: translateY(-3px);
+  box-shadow: var(--stin);
+}
+
+/* ===== HLAVIČKA / NAVIGACE ===== */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: transparent;
+  transition: var(--prechod);
+}
+
+.header--scrolled {
+  background-color: var(--barva-bila);
+  box-shadow: var(--stin);
+}
+
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--barva-tmava);
+}
+
+.logo span {
+  color: var(--barva-primarni);
+}
+
+.logo--footer {
+  color: var(--barva-bila);
+  margin-bottom: 12px;
+}
+
+.logo--footer span {
+  color: var(--barva-primarni);
+}
+
+.nav__list {
+  display: flex;
+  gap: 36px;
+}
+
+.nav__link {
+  font-weight: 500;
+  position: relative;
+  padding: 4px 0;
+}
+
+.nav__link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--barva-primarni);
+  transition: var(--prechod);
+}
+
+.nav__link:hover::after {
+  width: 100%;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+.hamburger span {
+  width: 26px;
+  height: 2px;
+  background-color: var(--barva-tmava);
+  transition: var(--prechod);
+}
+
+/* Stav otevřeného menu - třídy přidává JS, viz script.js */
+.hamburger--aktivni span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+.hamburger--aktivni span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger--aktivni span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(135deg, #3a2c25, #6b4a3a);
+  overflow: hidden;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(201, 138, 107, 0.35), transparent 60%);
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  color: var(--barva-bila);
+}
+
+.hero__title {
+  color: var(--barva-bila);
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  margin-bottom: 20px;
+}
+
+.hero__subtitle {
+  font-size: 1.15rem;
+  margin-bottom: 36px;
+  opacity: 0.9;
+}
+
+/* ===== SLUŽBY ===== */
+.sluzby {
+  padding: 100px 0;
+  background-color: var(--barva-svetle-pozadi);
+}
+
+.sluzby__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 28px;
+}
+
+.karta {
+  background-color: var(--barva-bila);
+  padding: 36px 24px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: var(--stin);
+  transition: var(--prechod);
+}
+
+.karta:hover {
+  transform: translateY(-8px);
+}
+
+.karta__ikona {
+  font-size: 2.4rem;
+  margin-bottom: 16px;
+}
+
+.karta h3 {
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+}
+
+.karta p {
+  color: #8a7d72;
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+}
+
+.karta__cena {
+  display: inline-block;
+  font-weight: 600;
+  color: var(--barva-primarni-tmava);
+}
+
+/* ===== GALERIE ===== */
+.galerie {
+  padding: 100px 0;
+}
+
+.galerie__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.galerie__polozka {
+  aspect-ratio: 1 / 1;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+
+.galerie__polozka img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.galerie__polozka:hover img {
+  transform: scale(1.08);
+}
+
+/* ===== REZERVACE / FORMULÁŘ ===== */
+.rezervace {
+  padding: 100px 0;
+  background-color: var(--barva-tmava);
+  color: var(--barva-bila);
+}
+
+.rezervace__inner {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 60px;
+}
+
+.rezervace__text h2,
+.rezervace__text p {
+  color: var(--barva-bila);
+}
+
+.rezervace__text p {
+  opacity: 0.8;
+  margin-top: 12px;
+}
+
+.formular {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 32px;
+  border-radius: 16px;
+}
+
+.formular__pole {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.formular__pole--full {
+  grid-column: 1 / -1;
+}
+
+.formular label {
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+.formular input,
+.formular select,
+.formular textarea {
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.08);
+  color: var(--barva-bila);
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+.formular input::placeholder,
+.formular textarea::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.formular input:focus,
+.formular select:focus,
+.formular textarea:focus {
+  outline: 2px solid var(--barva-primarni);
+}
+
+/* Třída pro pole, u kterých validace v JS odhalila chybu */
+.formular input.chyba-pole,
+.formular select.chyba-pole {
+  outline: 2px solid #e07a5f;
+}
+
+.chyba {
+  min-height: 16px;
+  font-size: 0.78rem;
+  color: #e6a68f;
+}
+
+.formular__submit {
+  grid-column: 1 / -1;
+  justify-self: start;
+}
+
+.formular__potvrzeni {
+  grid-column: 1 / -1;
+  font-weight: 500;
+  color: #9fd8a3;
+  min-height: 20px;
+}
+
+/* ===== RECENZE ===== */
+.recenze {
+  padding: 100px 0;
+  background-color: var(--barva-svetle-pozadi);
+}
+
+.recenze__slider {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.recenze__okno {
+  overflow: hidden;
+  flex: 1;
+}
+
+.recenze__track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.recenze__karta {
+  min-width: 100%;
+  background-color: var(--barva-bila);
+  border-radius: 16px;
+  padding: 40px;
+  text-align: center;
+  box-shadow: var(--stin);
+}
+
+.recenze__karta p {
+  font-style: italic;
+  margin-bottom: 16px;
+  font-size: 1.05rem;
+}
+
+.recenze__karta cite {
+  font-weight: 600;
+  color: var(--barva-primarni-tmava);
+}
+
+.recenze__sipka {
+  background-color: var(--barva-bila);
+  border: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: var(--stin);
+  flex-shrink: 0;
+  transition: var(--prechod);
+}
+
+.recenze__sipka:hover {
+  background-color: var(--barva-primarni);
+  color: var(--barva-bila);
+}
+
+/* ===== KONTAKT / FOOTER ===== */
+.kontakt {
+  background-color: #1e1815;
+  color: #cfc4bb;
+  padding: 70px 0 20px;
+}
+
+.kontakt__inner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.kontakt h4 {
+  color: var(--barva-bila);
+  margin-bottom: 14px;
+  font-size: 1.05rem;
+}
+
+.kontakt p {
+  margin-bottom: 6px;
+  font-size: 0.92rem;
+}
+
+.kontakt__copy {
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 20px;
+  font-size: 0.82rem;
+  opacity: 0.7;
+}
+
+/* ===== TLAČÍTKO ZPĚT NAHORU ===== */
+.nahoru-btn {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--barva-primarni);
+  color: var(--barva-bila);
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: var(--stin);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: var(--prechod);
+  z-index: 900;
+}
+
+/* Třídu "viditelne" přidává JS při scrollování, viz script.js */
+.nahoru-btn.viditelne {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* ===== RESPONZIVITA ===== */
+@media (max-width: 860px) {
+  .rezervace__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .formular {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: min(75%, 320px);
+    background-color: var(--barva-bila);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+    transform: translateX(100%);
+    transition: transform 0.35s ease;
+    padding-top: 100px;
+  }
+
+  /* Třídu "nav--otevrene" přepíná JS po kliknutí na hamburger, viz script.js */
+  .nav.nav--otevrene {
+    transform: translateX(0);
+  }
+
+  .nav__list {
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
